@@ -20,7 +20,7 @@
         autoCompleteUrl: '',
         autoCompleteTableName: '',
         autoCompleteParent: '',
-        selectValues : []
+        selectValues: []
     };
 
     // exposed methods
@@ -91,7 +91,7 @@
         var ajax_params = {};
         ajax_params.url = options.url;
         ajax_params.extraContainer = options.extraContainer,
-        ajax_params.type = 'POST';
+            ajax_params.type = 'POST';
         ajax_params.contentType = 'application/json; charset=utf-8;';
         ajax_params.dataType = 'json';
         ajax_params.control = input;
@@ -167,16 +167,16 @@
             event.stopPropagation();
         });
 
-        
+
         // selected ids
 
         renderData = function (data, control, dropdownOptions) {
             $(control).find('div.tree').empty();
             var html = renderRecursive(data, dropdownOptions);
             $(control).find('div.tree').html(html);
-            
+
             $(control).find('div.tree img').unbind("click", imageSliderList).bind("click", imageSliderList);
-            
+
             $(control).find('div.tree img').next('li').find('ul').hide();
 
             if (dropdownOptions.readonly === false) {
@@ -189,58 +189,58 @@
             $(this).next('li').find('ul').slideToggle();
         },
 
-        checkboxClicked = function (event) {
+            checkboxClicked = function (event) {
 
-            // this refers to dropdown options
-            var options = event.data.options;
+                // this refers to dropdown options
+                var options = event.data.options;
 
-            var text = $(this).attr('typename');
-            var id = $(this).attr('id');
-            var box = null;
-            box = $(this).closest('.mna_dropdown').find('.token-input-list-facebook');
-            if (box == undefined)
-                box = $(this).closest('.mna_dropdown').find('.tokens');
-
-            if (options.singlSelection === true) {
-                box.empty();
-            }
-            //            if(!ajax_params.itemContainerSelected && !ajax_params.itemContainerSuggested) 
-            //            {
-            //                box = $(this).closest('.mna_dropdown').find('.tokens') ;
-            //            }
-            //            else if(ajax_params.itemContainerSelected)
-            //            {
-            //               box = $(this).closest('.mna_dropdown').find('.tokens') ;
-            //               box.push(ajax_params.itemContainerSelected[0]);
-            //            }
-            //            else
-            //            {
-            //                box = $(this).closest('.mna_dropdown').find('.tokens') ;
-            //               box.push(ajax_params.itemContainerSuggested[0]);
-            //            }
-
-            if ($(this).is(':checked')) {
+                var text = $(this).attr('typename');
+                var id = $(this).attr('id');
+                var box = null;
+                box = $(this).closest('.mna_dropdown').find('.token-input-list-facebook');
+                if (box == undefined)
+                    box = $(this).closest('.mna_dropdown').find('.tokens');
 
                 if (options.singlSelection === true) {
-                    $('input[id^="' + options.idPrefix + '"]').prop('checked', false);
-                    $(this).prop('checked', true);
+                    box.empty();
                 }
+                //            if(!ajax_params.itemContainerSelected && !ajax_params.itemContainerSuggested) 
+                //            {
+                //                box = $(this).closest('.mna_dropdown').find('.tokens') ;
+                //            }
+                //            else if(ajax_params.itemContainerSelected)
+                //            {
+                //               box = $(this).closest('.mna_dropdown').find('.tokens') ;
+                //               box.push(ajax_params.itemContainerSelected[0]);
+                //            }
+                //            else
+                //            {
+                //                box = $(this).closest('.mna_dropdown').find('.tokens') ;
+                //               box.push(ajax_params.itemContainerSuggested[0]);
+                //            }
 
-                createToken(text, id, box, options.extraContainer, options);
-                if (options.afterSelected && $.isFunction(options.afterSelected)) {
-                    options.afterSelected(true, this);
-                }
-            } else {
-                if (options.singlSelection === true) {
-                    $('input[id^="' + options.idPrefix + '"]').prop('checked', false);
-                }
+                if ($(this).is(':checked')) {
 
-                unselectToken(id, $(this).attr(options.typeid));
-                if (options.afterSelected && $.isFunction(options.afterSelected)) {
-                    options.afterSelected(false, this);
+                    if (options.singlSelection === true) {
+                        $('input[id^="' + options.idPrefix + '"]').prop('checked', false);
+                        $(this).prop('checked', true);
+                    }
+
+                    createToken(text, id, box, options.extraContainer, options);
+                    if (options.afterSelected && $.isFunction(options.afterSelected)) {
+                        options.afterSelected(true, this);
+                    }
+                } else {
+                    if (options.singlSelection === true) {
+                        $('input[id^="' + options.idPrefix + '"]').prop('checked', false);
+                    }
+
+                    unselectToken(id, $(this).attr(options.typeid));
+                    if (options.afterSelected && $.isFunction(options.afterSelected)) {
+                        options.afterSelected(false, this);
+                    }
                 }
-            }
-        };
+            };
 
         createToken = function (text, id, box, extraBox, dropDownOpt) {
             // generate LI html for selected token
@@ -370,3 +370,6 @@
     });
 
 }(jQuery));
+
+
+// test3
