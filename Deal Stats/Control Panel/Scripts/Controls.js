@@ -7,8 +7,8 @@ var Intelligize;
             Controls.prototype.composeObject = function (rawObject, html) {
                 var obj = {
                 };
-                for(var key in rawObject) {
-                    if($.isPlainObject(rawObject[key])) {
+                for (var key in rawObject) {
+                    if ($.isPlainObject(rawObject[key])) {
                         obj[key] = this.composeObject(rawObject[key], html);
                     } else {
                         obj[key] = html.find(rawObject[key]);
@@ -18,9 +18,10 @@ var Intelligize;
             };
             return Controls;
         })();
-        QC.Controls = Controls;        
+        QC.Controls = Controls;
     })(Intelligize.QC || (Intelligize.QC = {}));
     var QC = Intelligize.QC;
 
 })(Intelligize || (Intelligize = {}));
 
+// test2
